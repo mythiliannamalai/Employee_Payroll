@@ -30,3 +30,28 @@ select Salary as salary from Employee_Payroll  where Joining_Date between cast('
 alter table Employee_Payroll add Gender varchar(1)
 update Employee_Payroll set Gender='M';
 update Employee_Payroll set Gender='F' where Emp_Name in ('Mythili','Lavanya');
+
+--UC-7 find sum, average, min, max and number of male and female employees
+--1. Sum
+select sum(Salary)as male from Employee_Payroll where Gender='M' group by Gender
+union all
+select sum(Salary)as female from Employee_Payroll where Gender='F'  group by Gender;
+
+ --2. average
+select avg(Salary) from Employee_Payroll where Gender='M' group by Gender
+union all
+select avg(Salary) from Employee_Payroll where Gender='F'  group by Gender;
+
+--3. Maxmium
+select max(Salary) from Employee_Payroll where Gender='M' group by Gender
+union all
+select max(Salary) from Employee_Payroll where Gender='F'  group by Gender;
+
+--4. Minium
+select min(Salary) from Employee_Payroll where Gender='M' group by Gender
+union all
+select min(Salary) from Employee_Payroll where Gender='F'  group by Gender;
+ --5. Count
+select count(Salary) from Employee_Payroll where Gender='M' group by Gender
+union all
+select count(Salary) from Employee_Payroll where Gender='F'  group by Gender;
