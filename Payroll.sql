@@ -25,3 +25,8 @@ select * from Employee_Payroll;
 --UC-5 retrieve salary data for a particular employee
 
 select Salary as salary from Employee_Payroll  where Joining_Date between cast('2022-04-18' as date )and getdate();
+
+--UC-6 add Gender to Employee Payroll Table and Update the Rows
+alter table Employee_Payroll add Gender varchar(1)
+update Employee_Payroll set Gender='M';
+update Employee_Payroll set Gender='F' where Emp_Name in ('Mythili','Lavanya');
