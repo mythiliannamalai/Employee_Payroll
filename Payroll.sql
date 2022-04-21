@@ -17,3 +17,7 @@ insert into Employee_Payroll(Emp_Name,Salary,Joining_Date) values
 ('Lavanya',40000,'2022-04-18'),
 ('Santhosh',50000,'2022-04-18'),
 ('Kiruba',40000,'2022-04-18');
+
+--UC-4 retrieve all the employee payroll data
+
+select * from Employee_Payroll;
