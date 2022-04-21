@@ -21,3 +21,7 @@ insert into Employee_Payroll(Emp_Name,Salary,Joining_Date) values
 --UC-4 retrieve all the employee payroll data
 
 select * from Employee_Payroll;
+
+--UC-5 retrieve salary data for a particular employee
+
+select Salary as salary from Employee_Payroll  where Joining_Date between cast('2022-04-18' as date )and getdate();
