@@ -9,7 +9,6 @@ Salary bigint,
 Joining_Date datetime);
 
 select * from Employee_Payroll
-
 --UC-3 Insert values
 insert into Employee_Payroll(Emp_Name,Salary,Joining_Date) values
 ('Mythili',75000,'2022-04-18'),
@@ -57,17 +56,18 @@ union all
 select count(Salary) from Employee_Payroll where Gender='F'  group by Gender;
 
 --UC-8 extend employee_payroll data to store employee information like employee phone, address and department
---Department
-alter table Employee_Payroll add Departments varchar(50)
-update Employee_Payroll set Departments='Manager'where Gender='F';
-update Employee_Payroll set Departments='HR'where Gender='M';
 
---Address
-alter table Employee_Payroll add Employee_Address varchar(50);
-update Employee_Payroll set Employee_Address ='Tamil nadu'; 
+create table Employee_Information(
+Emp_Id int identity foreign key references Employee_Payroll(Emp_Id),
+Department varchar(50) not null,
+Address varchar(50) default 'Tamilnadu',
+Phone_Number bigint);
 
---Phone mumber
-alter table Employee_Payroll add Emp_Phone_No bigint;
-update Employee_Payroll set Emp_Phone_No=9790486505 where Departments='Manager';
-update Employee_Payroll set Emp_Phone_No=9790486506 where Departments='HR';
+insert into Employee_Information(Department,Phone_Number) values
+('HR',9790486506),
+('Manager',9790486528),
+('HR',9790859728),
+('Sales',9629486506),
+('HR',9629490277);
 
+select * From Employee_Information;
