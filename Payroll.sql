@@ -78,12 +78,8 @@ alter table Employee_payroll add Taxable_Pay int;
 alter table Employee_payroll add Income_Tax int;
 alter table Employee_payroll add Net_Pay int;
 
+--UC-10 Make Terissa as part of sales and marketing
 
-
-
-
-
-
-
-
-
+insert into Employee_Payroll (Emp_Name,Salary,Joining_Date,Gender,Deductions,Taxable_Pay,Income_Tax,Net_Pay,Departments,Phone_number) values
+('Terissa',50000,'2022-04-22','F',15000,1500,200,35000,'Sales',9994813652),
+('Terissa',50000,'2022-04-22','F',15000,1500,200,35000,'Marketing',9875652452);
