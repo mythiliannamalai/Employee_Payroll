@@ -71,3 +71,17 @@ insert into Employee_Information(Department,Phone_Number) values
 ('HR',9629490277);
 
 select * From Employee_Information;
+
+--UC-9 extend employee_payroll table to have Basic Pay, Deductions, Taxable Pay, Income Tax, Net Pay
+
+alter table Employee_payroll add Deductions int;
+alter table Employee_payroll add Taxable_Pay int;
+alter table Employee_payroll add Income_Tax int;
+alter table Employee_payroll add Net_Pay int;
+
+
+
+
+
+
+
