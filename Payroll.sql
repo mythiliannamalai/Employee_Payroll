@@ -55,29 +55,23 @@ select count(Salary) from Employee_Payroll where Gender='M' group by Gender
 union all
 select count(Salary) from Employee_Payroll where Gender='F'  group by Gender;
 
+select * from Employee_Payroll;
 --UC-8 extend employee_payroll data to store employee information like employee phone, address and department
 
-create table Employee_Information(
-Emp_Id int identity foreign key references Employee_Payroll(Emp_Id),
-Department varchar(50) not null,
-Address varchar(50) default 'Tamilnadu',
-Phone_Number bigint);
+alter table Employee_Payroll add Department varchar(20);
+alter table Employee_Payroll add Address varchar(20) default 'tamilnadu';
+alter table Employee_Payroll add Pnone_number bigint;
+update Employee_Payroll  set Department ='HR' where Emp_Name in('Mythili','Lavanya');
+update Employee_Payroll  set Department ='Manager' where Emp_Name in('Naveen kumar','Santhosh','Kiruba');
+update Employee_Payroll  set Address='Tamilnadu';
+update Employee_Payroll set Pnone_number=9790486505 where Emp_Name='Mythili';
+update Employee_Payroll set Pnone_number=9790486506 where Emp_Name='Naveen Kumar';
+update Employee_Payroll set Pnone_number=9790486528 where Emp_Name='Lavanya';
+update Employee_Payroll set Pnone_number=9629490277 where Emp_Name='Santhosh';
+update Employee_Payroll set Pnone_number=9629486506 where Emp_Name='Kiruba';
+select * From Employee_Payroll;
 
-insert into Employee_Information(Department,Phone_Number) values
-('HR',9790486506),
-('Manager',9790486528),
-('HR',9790859728),
-('Sales',9629486506),
-('HR',9629490277);
 
-select * From Employee_Information;
-
---UC-9 extend employee_payroll table to have Basic Pay, Deductions, Taxable Pay, Income Tax, Net Pay
-
-alter table Employee_payroll add Deductions int;
-alter table Employee_payroll add Taxable_Pay int;
-alter table Employee_payroll add Income_Tax int;
-alter table Employee_payroll add Net_Pay int;
 
 
 
