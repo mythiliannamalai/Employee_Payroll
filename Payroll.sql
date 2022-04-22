@@ -71,6 +71,14 @@ update Employee_Payroll set Pnone_number=9629490277 where Emp_Name='Santhosh';
 update Employee_Payroll set Pnone_number=9629486506 where Emp_Name='Kiruba';
 select * From Employee_Payroll;
 
+--UC-9 extend employee_payroll table to have Basic Pay, Deductions, Taxable Pay, Income Tax, Net Pay
+
+alter table Employee_payroll add Deductions int;
+alter table Employee_payroll add Taxable_Pay int;
+alter table Employee_payroll add Income_Tax int;
+alter table Employee_payroll add Net_Pay int;
+
+
 
 
 
