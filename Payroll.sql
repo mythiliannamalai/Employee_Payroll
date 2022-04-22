@@ -70,7 +70,6 @@ update Employee_Payroll set Pnone_number=9790486528 where Emp_Name='Lavanya';
 update Employee_Payroll set Pnone_number=9629490277 where Emp_Name='Santhosh';
 update Employee_Payroll set Pnone_number=9629486506 where Emp_Name='Kiruba';
 select * From Employee_Payroll;
-
 --UC-9 extend employee_payroll table to have Basic Pay, Deductions, Taxable Pay, Income Tax, Net Pay
 
 alter table Employee_payroll add Deductions int;
@@ -80,6 +79,18 @@ alter table Employee_payroll add Net_Pay int;
 
 --UC-10 Make Terissa as part of sales and marketing
 
-insert into Employee_Payroll (Emp_Name,Salary,Joining_Date,Gender,Deductions,Taxable_Pay,Income_Tax,Net_Pay,Departments,Phone_number) values
-('Terissa',50000,'2022-04-22','F',15000,1500,200,35000,'Sales',9994813652),
-('Terissa',50000,'2022-04-22','F',15000,1500,200,35000,'Marketing',9875652452);
+insert into Employee_payroll(Emp_Name,Salary,Joining_Date,Gender,Department,Address,Pnone_number,Deductions,Taxable_Pay,Income_Tax,Net_Pay) values
+('Terissa',50000,'2022-04-22','F','Sales','Tamilnadu',9994813652,15000,1500,200,35000),
+('Terissa',50000,'2022-04-22','F','Marketing','Tamilnadu',9875652452,15000,1500,200,35000);
+ 
+ --UC-11 ER-Diagram and create new table
+
+ create table Depatment_Id(
+ Emp_Id int identity foreign key references Employee_Payroll(Emp_Id),
+ Department_Id int);
+
+insert into Depatment_Id(Department_Id) values(101),(105),(101),(105),(105),(103),(104);
+
+select * from Depatment_Id;
+
+select Employee_Payroll.Emp_Name,Employee_Payroll.Salary,Joining_Date,Gender,Department,Address,Pnone_number,Deductions,Taxable_Pay,Income_Tax,Net_Pay from Employee_Payroll  full outer join Depatment_Id on Employee_Payroll.Emp_Id=Depatment_Id.Emp_Id;
